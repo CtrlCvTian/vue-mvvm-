@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: tiange
  * @Date: 2020-04-07 14:07:30
- * @LastEditTime: 2020-04-07 16:22:30
+ * @LastEditTime: 2020-04-08 09:30:04
  * @LastEditors: tiange
  */
 let num = 1
@@ -116,6 +116,13 @@ function throttleStamp (func, wait) {
   }
 }
 
+/**
+ *
+ *
+ * @param {*} func 传递的回调函数
+ * @param {*} wait 传递的延时值
+ * @returns
+ */
 function throttleTimeout (func, wait) {
   let timeout
   return function () {
