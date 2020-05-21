@@ -2,7 +2,7 @@
  * @Description:
  * @Author: tiange
  * @Date: 2020-04-12 20:23:55
- * @LastEditTime: 2020-05-10 11:00:24
+ * @LastEditTime: 2020-05-13 15:56:38
  * @LastEditors: tiange
  */
 // vue 3.0响应式原理
@@ -36,7 +36,6 @@ function createReactiveObject (target) {
     get (target, propKey, receiver) {
       // 返回获取的值 判断是不是引用类型 进行递归代理
       let result = Reflect.get(target, propKey, receiver)
-
       // 依赖收集  订阅 把当前的key和这个effect对应起来
       //如果目标上这个key变化了 执行数组中对应的effect
       track(target, propKey)
@@ -105,9 +104,11 @@ function track (target, key) { //如果这个target中的 key 变化了 执行�
     if (!depsSet.has(effect)) {
       depsSet.add(effect)
     }
+    // 设置完weakMap 会进行保存
   }
 }
 function trigger (target, type, key) {
+  // 触发的时候再继续进行从weakMap中查找
   let desMap = targetMap.get(target)
   if (desMap) {
     let desSet = desMap.get(key)
@@ -125,7 +126,7 @@ function effect (fn) {
   effect() //  默认先执行一次
 }
 function createReactiveEffect (fn) {
-  let effect = function () { //创建响应式的effect
+  let effect = function () {
     return run(effect, fn) //运行  1.让fn执行 2.把effect 存到栈中
   }
   return effect
@@ -142,13 +143,12 @@ function run (effect, fn) {
 // 依赖收集  发布订阅
 let obj = reactive({ name: 'proxy' })
 effect(() => { //默认effect执行一次  依赖的数据发生改变 再次执行
-  console.log(obj.name) //会先执行get方法 
-})
-effect(() => { //默认effect执行一次  依赖的数据发生改变 再次执行
   console.log(obj.name + '-----x') //会先执行get方法 
 })
-// obj.name = 'proxy2'
-// obj.name = 'proxy3'
+effect(() => { //默认effect执行一次  依赖的数据发生改变 再次执行
+  console.log(obj.name + '-----y') //会先执行get方法 
+})
+obj.name = 'proxy3'
 
 // 代理对象
 // let proxy = reactive({ name: 'proxy' })
