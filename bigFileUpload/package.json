@@ -1,0 +1,12 @@
+{
+  "name": "bigFileUpload",
+  "version": "1.0.0",
+  "description": "<!--\r  * @Description:\r  * @Author: tiange\r  * @Date: 2020-06-12 16:17:10\r  * @LastEditTime: 2020-06-12 16:17:11\r  * @LastEditors: tiange\r -->",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

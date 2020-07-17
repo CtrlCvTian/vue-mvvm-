@@ -1,0 +1,35 @@
+<!--
+ * @Description: 
+ * @Author: tiange
+ * @Date: 2020-06-12 16:18:43
+ * @LastEditTime: 2020-06-18 15:34:17
+ * @LastEditors: tiange
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <img src="" id="pic" />
+    <input type="file" id="file" />
+    <script>
+      // blob协议  前端不需要将图片上传到服务器之后再拿到回显地址 而是直接预览
+      document.getElementById('file').addEventListener('change', (event) => {
+        var file = event.target.files[0]
+        // 创建URL对象
+        const URL = window.URL
+        // 创建本地预览地址
+        const objectURL = URL.createObjectURL(file)
+        const pic = document.getElementById('pic')
+        pic.src = objectURL
+        pic.onload = function () {
+          // 释放创建的对象
+          URL.revokeObjectURL(objectURL)
+        }
+      })
+    </script>
+  </body>
+</html>

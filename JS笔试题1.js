@@ -2,7 +2,7 @@
  * @Description:
  * @Author: tiange
  * @Date: 2020-05-15 14:45:56
- * @LastEditTime: 2020-05-18 16:28:07
+ * @LastEditTime: 2020-06-09 15:47:39
  * @LastEditors: tiange
  */
 // var test = (function (i) {
@@ -389,15 +389,56 @@ console.log(arr) */
  *
  * @param {*} count 需要计算累加的值
  */
-function fn(count){
+function fn (count) {
   let result = []
   // 求出中间值
   let middle = Math.ceil(count / 2)
-  for(let i = 0; i <= middle; i++){
+  for (let i = 0; i <= middle; i++) {
     // 从1开始累加
-    for(let j = 2; ;j++){
+    for (let j = 2; ; j++) {
       // 控制累加多少次
-      
+
     }
   }
 }
+
+
+const a = 'abc';
+console.log(a instanceof String); // ?
+
+const b = new String('abc');
+console.log(b instanceof String); // ?
+
+console.log(String instanceof String);  // ?
+console.log(Object instanceof Object);  // ?
+console.log(Function instanceof Function); // ?
+console.log(Function instanceof Object); // ?
+
+
+function count (str) {
+  var strArr = str.split('')
+  var obj = {}
+  var i = 0
+  while (i < strArr.length) {
+    if (strArr[i].toString().replace(/^\s+|\s+$/gm, '') === '') {
+      ++i
+      continue;
+    } else {
+      obj.hasOwnProperty(strArr[i]) ?
+        obj[strArr[i]] = ++obj[strArr[i]] : obj[strArr[i]] = 0
+      ++i
+    }
+  }
+  return obj
+}
+console.log(count('hello world'))
+
+function count (str) {
+  return str.split('').reduce(function (prev, next) {
+    if (next !== ' ') {
+      prev[next] ? prev[next]++ : prev[next] = 1
+    }
+    return prev
+  }, {})
+}
+console.log(count('hello world'))

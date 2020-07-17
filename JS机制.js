@@ -2,7 +2,7 @@
  * @Description:
  * @Author: tiange
  * @Date: 2020-04-14 09:26:53
- * @LastEditTime: 2020-04-14 10:41:33
+ * @LastEditTime: 2020-07-13 11:32:37
  * @LastEditors: tiange
  */
 /*
@@ -302,7 +302,7 @@ console.log('script end') */
 */
 
 // 今日头条面试题
-async function async1 () {
+/* async function async1 () {
   console.log('async1 start')
   await async2()
   console.log('async1 end')
@@ -321,7 +321,7 @@ new Promise(function (resolve) {
 }).then(function () {
   console.log('promise2')
 })
-console.log('script end')
+console.log('script end') */
 /*
   script start
   async1 start
@@ -332,3 +332,15 @@ console.log('script end')
   promise2
   settimeout
 */
+
+/* var twoSum = function (nums, target) {
+  var _result;
+  nums.some((item, index) => {
+    var _index = nums.indexOf(target - item)
+    if (_index !== -1 && index !== _index) {
+      _result = [index, _index]
+      return true
+    }
+  })
+  return _result
+} */

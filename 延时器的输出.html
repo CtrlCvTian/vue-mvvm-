@@ -1,0 +1,69 @@
+<!--
+ * @Description: 
+ * @Author: tiange
+ * @Date: 2020-07-04 17:10:21
+ * @LastEditTime: 2020-07-04 17:22:11
+ * @LastEditors: tiange
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /* const tasks = []
+      for (var i = 0; i < 5; i++) {
+        ;((j) => {
+          tasks.push(
+            new Promise((resolve) => {
+              setTimeout(() => {
+                console.log(new Date(), j)
+                resolve()
+              }, 1000 * j)
+            })
+          )
+        })(i)
+      }
+      Promise.all(tasks).then(() => {
+        setTimeout(() => {
+          console.log(new Date(), i)
+        }, 1000)
+      }) */
+      /* const tasks = []
+      const output = (j) =>
+        new Promise((resolve) => {
+          setTimeout(() => {
+            console.log(new Date(), j)
+            resolve()
+          }, 1000 * j)
+        })
+
+      for (var i = 0; i < 5; i++) {
+        tasks.push(output(i))
+      }
+      Promise.all(tasks).then(() => {
+        setTimeout(() => {
+          console.log(new Date(), i)
+        }, 1000)
+      }) */
+
+      const sleep = (timeoutMS) =>
+        new Promise((resolve) => {
+          setTimeout(resolve, timeoutMS)
+        })
+      ;(async () => {
+        for (var i = 0; i < 5; i++) {
+          if (i > 0) {
+            await sleep(1000)
+          }
+          console.log(new Date(), i)
+        }
+        await sleep(1000)
+        console.log(new Date(), i)
+      })()
+    </script>
+  </body>
+</html>
